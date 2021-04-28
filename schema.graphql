@@ -1,0 +1,99 @@
+  type Student {
+    id: ID!
+    firstName: String! 
+    lastName: String!
+    info: String
+    status: Status 
+    course: Course
+  }
+
+  enum Status {
+    cool
+    angry
+    happy
+    confused
+    frustrated
+  }
+
+   type Course {
+    id: ID!
+    name: String!
+    desc: String
+  }
+
+
+
+   mutation addStudents($students: [AddStudentInput!]!) {
+    addStudent(input: $students) {
+      student {
+        id
+        firstName 
+        lastName
+        status
+        course
+      }
+    }
+  }
+
+
+  {
+      "students": [
+          {
+              "firstName": "Ruth",
+               "lastName": "Bengtsson",
+              "status": "happy",
+              "course": {
+                  "id": "0x5"
+              }
+          },
+          {
+               "firstName": "Fragus",
+               "lastName": "Baltazar",
+              "status": "frustrated",
+              "course": {
+                  "id": "0x7"
+              }
+          },
+             {
+               "firstName": "Bonny",
+               "lastName": "Winter",
+              "status": "confused",
+              "course": {
+                  "id": "0x6"
+              }
+          },
+           {
+               "firstName": "Alan",
+               "lastName": "Pac",
+              "status": "happy",
+              "course": {
+                  "id": "0x7"
+              }
+          },
+           {
+               "firstName": "Bruno",
+               "lastName": "Mars",
+              "status": "angry",
+              "course": {
+                  "id": "0x7"
+              }
+          },
+          {
+               "firstName": "Hermione",
+               "lastName": "Granger",
+              "status": "cool",
+              "course": {
+                  "id": "0x5"
+              }
+          },
+           {
+               "firstName": "Ronda",
+               "lastName": "Crux",
+              "status": "cool",
+              "course": {
+                  "id": "0x6"
+              }
+          }
+
+      ]
+  }

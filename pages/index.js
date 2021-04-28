@@ -1,35 +1,39 @@
-import PlayersList, { ALL_STUDENTS_QUERY, ALL_COURSES_QUERY } from "../components/studentList";
-import { initializeApollo } from "../lib/apolloClient";
-import Link from "next/link";
+import Head from 'next/head'
+import Layout, { siteTitle } from '../components/sharedLayout'
+import utilStyles from '../styles/utils.module.css'
+import styles from '../styles/layout.module.css'
+import Link from 'next/link'
 
-const IndexPage = () => {
+
+export default function Home() {
   return (
-    <div>
-      <h1 style={{ textAlign: "center" }}>
-        Students Directory <Link href="/table">(EPL Table)</Link>
-      </h1>
-      <PlayersList />
-    </div>
+    <Layout home>
+      <Head>
+        <title>{siteTitle}</title>
+      </Head>
+      <section className={utilStyles.headingMd}>
+        <p>
+          (This is a sample website - you’ll be building a site like this on{' '}
+          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
+        </p>
+      </section>
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>Education catalogue</h2>
+        <div className={styles.container}>
+              <div className={styles.row}>
+                <div className={styles.blue}>
+            <Link href="/">
+              <a>Show all courses</a>
+              </Link>
+              </div>
+              <div className={styles.link}>
+              <Link href="/students/allStudents">
+              <a>Show all students</a>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </Layout>
   )
-};
-
-export async function getStaticProps() {
-  const apolloClient = initializeApollo();
-
-  await apolloClient.query({
-    query: ALL_COURSES_QUERY,
-  });
-
-  await apolloClient.query({
-    query: ALL_STUDENTS_QUERY,
-  });
-
-  return {
-    props: {
-      initialApolloState: apolloClient.cache.extract(),
-    },
-    revalidate: 1,
-  };
 }
-
-export default IndexPage;

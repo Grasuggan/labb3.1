@@ -81,7 +81,7 @@ export const ALL_COURSES_QUERY = gql`
 //   }
 // `;
 
-export default function PlayersList() {
+export default function StudentList() {
 //   const [course, setCourse] = useState(null);
 //   const [club, setClub] = useState(null);
 

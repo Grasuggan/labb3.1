@@ -8,7 +8,7 @@ import Card from "@material-ui/core/Card";
 
   const useStyles = makeStyles({
     root: {
-      minWidth: 275,
+      minWidth: 0,
     },
     bullet: {
       display: "inline-block",
@@ -106,6 +106,13 @@ export default function StudentList() {
 //     getFilteredPlayers,
 //     { loading: filterLoading, data: filteredPlayers, error: filterError },
 //   ] = useLazyQuery(FILTER_PLAYERS_QUERY);
+
+
+
+// const [
+//       getFilteredPlayers,
+//       { loading: filterLoading, data: filteredPlayers, error: filterError },
+//     ] = useLazyQuery(FILTER_PLAYERS_QUERY);
 
   //
 

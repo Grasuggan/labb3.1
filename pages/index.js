@@ -22,7 +22,7 @@ export default function Home() {
         <div className={styles.container}>
               <div className={styles.row}>
                 <div className={styles.blue}>
-            <Link href="/">
+            <Link href="/courses/courses">
               <a>Show all courses</a>
               </Link>
               </div>

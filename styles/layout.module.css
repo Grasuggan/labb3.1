@@ -45,7 +45,21 @@
     background:#0000ff;
   }
 
-  .link a, .blue a{
+  .link a, .blue a, .bluecourse a{
     color: white;
     text-decoration: none;
+  }
+
+  .bluecourse{
+    display: block;
+    background: #4d4dff;
+    padding: 5px;
+    border-radius: 25px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .bluecourse:hover{
+    background:#0000ff;
   }

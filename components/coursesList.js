@@ -5,7 +5,7 @@
   import CardContent from "@material-ui/core/CardContent";
   import Typography from "@material-ui/core/Typography";
   import styles from '../styles/layout.module.css'
-import Link from 'next/link'
+  import Link from 'next/link'
 
   const useStyles = makeStyles({
     root: {

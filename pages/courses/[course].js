@@ -1,15 +1,15 @@
 import { gql} from "@apollo/client";
 import { makeStyles } from "@material-ui/core/styles";
-import styles from '../../styles/layout.module.css'
-import Link from 'next/link'
 import Layout from '../../components/sharedLayout'
-import CourseInfo from "../../components/courseInfo";
 import { initializeApollo } from "../../lib/apolloClient";
-import CoursesInfo, { CURRENT_COURSE_QUERY } from "../../components/courseInfo";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import Link from 'next/link'
+import styles from '../../styles/layout.module.css'
+import { getAllCourses } from '../../lib/info'
+
 
 
 
@@ -32,10 +32,6 @@ const useStyles = makeStyles({
   });
 
 
-
-
-
-
 export async function getStaticProps(props) {
   const apolloClient = initializeApollo();
 
@@ -56,16 +52,15 @@ export async function getStaticProps(props) {
 }
 `;
 
-
     const studentsData = await apolloClient.query({
       query: CURRENT_COURSE_QUERY,
       variables: {
-        // cname: props.params.course,
-        cname: "Java",
+        
+         cname: props.params.course,
+        
       }
     });
 
-    console.log(`studentsdata ${studentsData.data.queryCourse.map((c) => c.name)}`)
 
   return {
     props: {
@@ -74,41 +69,19 @@ export async function getStaticProps(props) {
   };
 }
 
-export async function getStaticPaths(){
 
-  const paths = [
-    {
-    params: {
-      course: "JavaScript",
-    },
-  },
-  {
-    params: {
-      course: "Java",
-    },
-  },
-  {
-    params: {
-      course: "React",
-    },
-  },
-];
- 
-  return{
-    paths,
-    fallback: false,
-  };
+export async function getStaticPaths() {
+
+ const paths = await getAllCourses();
+ return {
+   paths,
+   fallback: false
+ }
+
 }
-
-
-
-
-
-
 
  export default function Course(pageProps) {
   const classes = useStyles();
-    console.log("2")
     return (
       <Layout>
  {pageProps.studentsData.data.queryCourse.map((c) => (
@@ -146,30 +119,15 @@ export async function getStaticPaths(){
         </Grid>
         </div>
           ))}
+
+      <div className={styles.backToHome}>
+          <Link href="/courses/courses">
+            <a>← Back to courses</a>
+          </Link>
+        </div>
      
      </Layout>
     )
   };
   
-  // export async function getStaticProps(props) {
-  //   const apolloClient = initializeApollo();
-  // console.log("1")
-
-  //   const studentsData = await apolloClient.query({
-  //     query: CURRENT_COURSE_QUERY,
-  //     variables: {
-  //       cname: props.params.course,
-  //     }
-  //   });
-  // console.log(`in getprops ${props.params.course}`)
-  
-  //   return {
-  //     props: {
-  //       initialApolloState: apolloClient.cache.extract(),
-  //     },
-  //     revalidate: 1,
-  //   };
-  // }
-  
-  // export default Course;
 

@@ -1,13 +1,12 @@
 import StudentList, { ALL_STUDENTS_QUERY, ALL_COURSES_QUERY } from "../../components/studentList";
 import { initializeApollo } from "../../lib/apolloClient";
-import Link from "next/link";
 import Layout from '../../components/sharedLayout'
 
 const AllStudents = () => {
   return (
     <Layout>
       <h1 style={{ textAlign: "center" }}>
-        Students Directory <Link href="/table">(EPL Table)</Link>
+        List of students
       </h1>
       <StudentList />
     </Layout>

@@ -35,6 +35,20 @@
     background:#cc0000;
   }
 
+  .black{
+    display: block;
+    background: #444;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 25px;
+    width: 60%;
+    text-align: center;
+  }
+
+  .black:hover{
+    background: black;
+  }
+
   .blue{
     display: block;
     background: #4d4dff;
@@ -45,7 +59,7 @@
     background:#0000ff;
   }
 
-  .link a, .blue a, .bluecourse a{
+  .link a, .blue a, .bluecourse a, .black a{
     color: white;
     text-decoration: none;
   }

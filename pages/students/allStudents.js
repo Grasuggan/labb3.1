@@ -1,17 +1,15 @@
-import React from 'react'
+import React from "react";
 import StudentList, { ALL_STUDENTS_QUERY } from "../../components/studentList";
 import { initializeApollo } from "../../lib/apolloClient";
-import Layout from '../../components/sharedLayout'
+import Layout from "../../components/sharedLayout";
 
 const AllStudents = () => {
   return (
     <Layout>
-      <h1 style={{ textAlign: "center" }}>
-        List of students
-      </h1>
+      <h1 style={{ textAlign: "center" }}>List of students</h1>
       <StudentList />
     </Layout>
-  )
+  );
 };
 
 export async function getStaticProps() {

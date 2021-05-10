@@ -1,22 +1,19 @@
-import React from 'react'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/layout.module.css'
-import utilStyles from '../styles/utils.module.css'
-import Link from 'next/link'
+import React from "react";
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/layout.module.css";
+import utilStyles from "../styles/utils.module.css";
+import Link from "next/link";
 
-const name = 'Welcome'
-export const siteTitle = 'Next.js education catalogue'
+const name = "Welcome";
+export const siteTitle = "Next.js education catalogue";
 
 export default function Layout({ children, home }) {
   return (
     <div className={styles.container}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="This is me testning out next.js"
-        />
+        <meta name="description" content="This is me testning out next.js" />
         <meta
           property="og:image"
           content={`https://og-image.vercel.app/${encodeURI(
@@ -53,7 +50,6 @@ export default function Layout({ children, home }) {
                 />
               </a>
             </Link>
-            
           </>
         )}
       </header>
@@ -66,5 +62,5 @@ export default function Layout({ children, home }) {
         </div>
       )}
     </div>
-  )
+  );
 }

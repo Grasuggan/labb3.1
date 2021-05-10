@@ -1,6 +1,5 @@
 .container {
     max-width: 36rem;
-    padding: 0 1rem;
     margin: 3rem auto 6rem;
   }
   
@@ -13,7 +12,20 @@
   .backToHome {
     margin: 3rem 0 0;
   }
+  .backToHomeRight{
+    margin-top: 3em;
+  }
 
+  .buttonColumn{
+    width: 50%;
+  }
+
+  .backContainer{
+    display: flex;
+    width: 100%;
+    flex-flow: row;
+    align-items: baseline;
+  }
   .container{
     max-width: 600px;
     margin: 3rem auto
@@ -77,3 +89,9 @@
   .bluecourse:hover{
     background:#0000ff;
   }
+
+  /* .buttonContainer{
+    display: flex;
+    width: 100%;
+    flex-flow: row;
+  } */

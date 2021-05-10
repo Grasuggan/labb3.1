@@ -1,4 +1,5 @@
-import StudentList, { ALL_STUDENTS_QUERY, ALL_COURSES_QUERY } from "../../components/studentList";
+import React from 'react'
+import StudentList, { ALL_STUDENTS_QUERY } from "../../components/studentList";
 import { initializeApollo } from "../../lib/apolloClient";
 import Layout from '../../components/sharedLayout'
 
@@ -15,10 +16,6 @@ const AllStudents = () => {
 
 export async function getStaticProps() {
   const apolloClient = initializeApollo();
-
-  await apolloClient.query({
-    query: ALL_COURSES_QUERY,
-  });
 
   await apolloClient.query({
     query: ALL_STUDENTS_QUERY,

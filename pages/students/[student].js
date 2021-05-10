@@ -1,3 +1,4 @@
+import React from 'react'
 import Layout from '../../components/sharedLayout'
 import utilStyles from '../../styles/utils.module.css'
 import { getAllPostIds, getPostData } from '../../lib/info'

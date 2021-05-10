@@ -1,3 +1,4 @@
+import React from 'react'
 import { gql} from "@apollo/client";
 import { makeStyles } from "@material-ui/core/styles";
 import Layout from '../../components/sharedLayout'
@@ -31,26 +32,26 @@ const useStyles = makeStyles({
     },
   });
 
+export const CURRENT_COURSE_QUERY = gql`
+query getCurrentCourseStudents($cname: String)
+{
+queryCourse(filter: {name: {anyofterms: $cname}}) 
+{
+ id
+ name
+ desc
+ students{
+   firstName
+   lastName
+   status
+ }
+}
+}
+`;
 
 export async function getStaticProps(props) {
   const apolloClient = initializeApollo();
 
-  const CURRENT_COURSE_QUERY = gql`
-  query getCurrentCourseStudents($cname: String)
-{
- queryCourse(filter: {name: {anyofterms: $cname}}) 
- {
-   id
-   name
-   desc
-   students{
-     firstName
-     lastName
-     status
-   }
- }
-}
-`;
 
     const studentsData = await apolloClient.query({
       query: CURRENT_COURSE_QUERY,
@@ -81,13 +82,14 @@ export async function getStaticPaths() {
 }
 
  export default function Course(pageProps) {
+
   const classes = useStyles();
     return (
       <Layout>
  {pageProps.studentsData.data.queryCourse.map((c) => (
-   <div>
+   <div key={c.id}>
       <h1 style={{ textAlign: "center" }}> {c.name} </h1> 
-            <Grid style={{ marginTop: "20px" }} container spacing={2}>
+            <Grid style={{ marginTop: "20px" }} container spacing={2} key={c.id}>
        
           <p style={{ textAlign: "center" }}> {c.desc}</p>
             
@@ -110,7 +112,7 @@ export async function getStaticPaths() {
             </Card>
           </Grid>
           )) : 
-          <Grid item xs={4} key={student.id}>
+          <Grid item xs={4}>
                 <Typography className={classes.pos} color="textSecondary">
                     No students found
                 </Typography>

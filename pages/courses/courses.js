@@ -1,3 +1,4 @@
+import React from 'react'
 import CoursesList, { ALL_COURSES_QUERY } from "../../components/coursesList";
 import { initializeApollo } from "../../lib/apolloClient";
 import Layout from '../../components/sharedLayout'

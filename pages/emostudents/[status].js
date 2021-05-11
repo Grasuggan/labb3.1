@@ -107,7 +107,7 @@ export default function Emotion(pageProps) {
       </Grid>
 
       <div className={styles.container}>
-        <div class={styles.backContainer}>
+        <div className={styles.backContainer}>
           <div className={styles.buttonColumn}>
             <div className={styles.backToHome}>
               <Link href={`/status/${pageProps.statusTitle}`}>

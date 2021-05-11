@@ -65,21 +65,20 @@ export default function Emotion(pageProps) {
   return (
     <Layout>
       {pageProps.emotionData.data.queryEmotion.map((c) => (
-        <div key={c.id}>
-          <h1 style={{ textAlign: "center" }}> {c.title} </h1>
-          <Grid style={{ marginTop: "20px" }} container spacing={2} key={c.id}>
-            <p style={{ textAlign: "center" }}> {c.desc}</p>
+        <Grid style={{ marginTop: "20px" }} container spacing={1} key={c.id}>
+          <h1 style={{ textAlign: "center", width: "100%" }}> {c.title} </h1>
 
-            <div
-              className={styles.link}
-              style={{ width: "50%", margin: "0 auto", textAlign: "center" }}
-            >
-              <Link href={`/emostudents/${c.title}`}>
-                <a>Show all students with {c.title} emotion</a>
-              </Link>
-            </div>
-          </Grid>
-        </div>
+          <p style={{ textAlign: "center" }}> {c.desc}</p>
+
+          <div
+            className={styles.link}
+            style={{ width: "50%", margin: "0 auto", textAlign: "center" }}
+          >
+            <Link href={`/emostudents/${c.title}`}>
+              <a>Show all students with {c.title} emotion</a>
+            </Link>
+          </div>
+        </Grid>
       ))}
 
       <div className={styles.backToHome}>

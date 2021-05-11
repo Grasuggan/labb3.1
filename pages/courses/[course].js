@@ -83,44 +83,43 @@ export default function Course(pageProps) {
   return (
     <Layout>
       {pageProps.studentsData.data.queryCourse.map((c) => (
-        <div key={c.id}>
+        <Grid style={{ marginTop: "20px" }} container spacing={2} key={c.id}>
           <h1 style={{ textAlign: "center" }}> {c.name} </h1>
-          <Grid style={{ marginTop: "20px" }} container spacing={2} key={c.id}>
-            <p style={{ textAlign: "center" }}> {c.desc}</p>
 
-            {c.students.length > 0 ? (
-              c.students.map((student) => (
-                <Grid item xs={6} key={student.id}>
-                  <Card className={classes.root}>
-                    <CardContent>
-                      <Typography
-                        className={classes.title}
-                        color="textPrimary"
-                        gutterBottom
-                      >
-                        {student.firstName} {student.lastName}
-                      </Typography>
-                      <Typography variant="body2" component="p">
-                        Status - {student.status}
-                      </Typography>
-                      <div className={styles.bluecourse}>
-                        <Link href={`/status/${student.status}`}>
-                          <a>About {student.status} emotion</a>
-                        </Link>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Grid>
-              ))
-            ) : (
-              <Grid item xs={4}>
-                <Typography className={classes.pos} color="textSecondary">
-                  No students found
-                </Typography>
+          <p style={{ textAlign: "center" }}> {c.desc}</p>
+
+          {c.students.length > 0 ? (
+            c.students.map((student) => (
+              <Grid item xs={6} key={student.id}>
+                <Card className={classes.root}>
+                  <CardContent>
+                    <Typography
+                      className={classes.title}
+                      color="textPrimary"
+                      gutterBottom
+                    >
+                      {student.firstName} {student.lastName}
+                    </Typography>
+                    <Typography variant="body2" component="p">
+                      Status - {student.status}
+                    </Typography>
+                    <div className={styles.bluecourse}>
+                      <Link href={`/status/${student.status}`}>
+                        <a>About {student.status} emotion</a>
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
               </Grid>
-            )}
-          </Grid>
-        </div>
+            ))
+          ) : (
+            <Grid item xs={4}>
+              <Typography className={classes.pos} color="textSecondary">
+                No students found
+              </Typography>
+            </Grid>
+          )}
+        </Grid>
       ))}
 
       <div className={styles.backToHome}>

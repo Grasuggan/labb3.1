@@ -12,11 +12,6 @@ const useStyles = makeStyles({
   root: {
     minWidth: 0,
   },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
-  },
   title: {
     fontSize: 18,
   },
@@ -29,6 +24,7 @@ const useStyles = makeStyles({
 export const ALL_STUDENTS_QUERY = gql`
   query allStudents {
     queryStudent {
+      id
       firstName
       lastName
       status
@@ -55,40 +51,36 @@ export default function StudentList() {
   const dataset = allStudents;
 
   return (
-    <div>
-      <div style={{ display: "flex" }}></div>
-      <Grid style={{ marginTop: "20px" }} container spacing={2}>
-        {dataset.map((student) => (
-          <Grid item xs={4} key={student.id}>
-            <Card className={classes.root}>
-              <CardContent>
-                <Typography
-                  className={classes.title}
-                  color="textPrimary"
-                  gutterBottom
-                >
-                  {student.firstName}
-                  <br />
-                  {student.lastName}
-                </Typography>
-                <Typography className={classes.pos} color="textSecondary">
-                  {student.course.name}
-                </Typography>
-                <Typography variant="body2" component="p">
-                  Status - {student.status}
-                </Typography>
-                <Typography variant="body2" component="p">
-                  <div className={styles.black}>
-                    <Link href={`/students/${student.lastName}`}>
-                      <a>Info</a>
-                    </Link>
-                  </div>
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </div>
+    <Grid style={{ marginTop: "20px" }} container spacing={2}>
+      {dataset.map((student) => (
+        <Grid item xs={4} key={student.id}>
+          <Card className={classes.root}>
+            <CardContent>
+              <Typography
+                className={classes.title}
+                color="textPrimary"
+                gutterBottom
+              >
+                {student.firstName}
+                <br />
+                {student.lastName}
+              </Typography>
+              <Typography className={classes.pos} color="textSecondary">
+                {student.course.name}
+              </Typography>
+              <Typography variant="body2" component="p">
+                Status - {student.status}
+              </Typography>
+
+              <div className={styles.black}>
+                <Link href={`/students/${student.lastName}`}>
+                  <a>Info</a>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+        </Grid>
+      ))}
+    </Grid>
   );
 }

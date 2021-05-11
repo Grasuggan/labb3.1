@@ -15,11 +15,6 @@ const useStyles = makeStyles({
   root: {
     minWidth: 0,
   },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
-  },
   title: {
     fontSize: 18,
   },
@@ -32,9 +27,11 @@ const useStyles = makeStyles({
 export const STUDENT_CURRENT_EMOTION_QUERY = gql`
   query getStudentCurrentEmotion($status: Status) {
     queryStudent(filter: { status: { eq: $status } }) {
+      id
       firstName
       lastName
       course {
+        id
         name
       }
     }

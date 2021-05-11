@@ -15,11 +15,6 @@ const useStyles = makeStyles({
   root: {
     minWidth: 0,
   },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
-  },
   title: {
     fontSize: 18,
   },
@@ -36,6 +31,7 @@ export const CURRENT_COURSE_QUERY = gql`
       name
       desc
       students {
+        id
         firstName
         lastName
         status
@@ -85,9 +81,7 @@ export default function Course(pageProps) {
       {pageProps.studentsData.data.queryCourse.map((c) => (
         <Grid style={{ marginTop: "20px" }} container spacing={2} key={c.id}>
           <h1 style={{ textAlign: "center" }}> {c.name} </h1>
-
           <p style={{ textAlign: "center" }}> {c.desc}</p>
-
           {c.students.length > 0 ? (
             c.students.map((student) => (
               <Grid item xs={6} key={student.id}>
@@ -113,7 +107,7 @@ export default function Course(pageProps) {
               </Grid>
             ))
           ) : (
-            <Grid item xs={4}>
+            <Grid item xs={4} key={c.id}>
               <Typography className={classes.pos} color="textSecondary">
                 No students found
               </Typography>

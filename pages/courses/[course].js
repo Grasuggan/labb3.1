@@ -11,19 +11,6 @@ import Link from "next/link";
 import styles from "../../styles/layout.module.css";
 import { getAllCourses } from "../../lib/info";
 
-const useStyles = makeStyles({
-  root: {
-    minWidth: 0,
-  },
-  title: {
-    fontSize: 18,
-  },
-  pos: {
-    marginBottom: 12,
-    fontSize: 12,
-  },
-});
-
 export const CURRENT_COURSE_QUERY = gql`
   query getCurrentCourseStudents($cname: String) {
     queryCourse(filter: { name: { anyofterms: $cname } }) {
@@ -75,23 +62,18 @@ export async function getStaticPaths() {
 }
 
 export default function Course(pageProps) {
-  const classes = useStyles();
   return (
     <Layout>
       {pageProps.studentsData.data.queryCourse.map((c) => (
         <Grid style={{ marginTop: "20px" }} container spacing={2} key={c.id}>
-          <h1 style={{ textAlign: "center" }}> {c.name} </h1>
+          <h1 style={{ textAlign: "center", width: "100%" }}> {c.name} </h1>
           <p style={{ textAlign: "center" }}> {c.desc}</p>
           {c.students.length > 0 ? (
             c.students.map((student) => (
               <Grid item xs={6} key={student.id}>
-                <Card className={classes.root}>
+                <Card>
                   <CardContent>
-                    <Typography
-                      className={classes.title}
-                      color="textPrimary"
-                      gutterBottom
-                    >
+                    <Typography color="textPrimary" gutterBottom>
                       {student.firstName} {student.lastName}
                     </Typography>
                     <Typography variant="body2" component="p">
@@ -108,9 +90,7 @@ export default function Course(pageProps) {
             ))
           ) : (
             <Grid item xs={4} key={c.id}>
-              <Typography className={classes.pos} color="textSecondary">
-                No students found
-              </Typography>
+              <Typography color="textSecondary">No students found</Typography>
             </Grid>
           )}
         </Grid>

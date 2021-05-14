@@ -11,19 +11,6 @@ import Link from "next/link";
 import styles from "../../styles/layout.module.css";
 import { getAllEmotions } from "../../lib/info";
 
-const useStyles = makeStyles({
-  root: {
-    minWidth: 0,
-  },
-  title: {
-    fontSize: 18,
-  },
-  pos: {
-    marginBottom: 12,
-    fontSize: 12,
-  },
-});
-
 export const STUDENT_CURRENT_EMOTION_QUERY = gql`
   query getStudentCurrentEmotion($status: Status) {
     queryStudent(filter: { status: { eq: $status } }) {
@@ -67,7 +54,6 @@ export async function getStaticPaths() {
 }
 
 export default function Emotion(pageProps) {
-  const classes = useStyles();
   return (
     <Layout>
       <h1 style={{ textAlign: "center" }}>
@@ -78,13 +64,9 @@ export default function Emotion(pageProps) {
         {pageProps.studentsData.data.queryStudent.length > 0 ? (
           pageProps.studentsData.data.queryStudent.map((student) => (
             <Grid item xs={6} key={student.id}>
-              <Card className={classes.root}>
+              <Card>
                 <CardContent>
-                  <Typography
-                    className={classes.title}
-                    color="textPrimary"
-                    gutterBottom
-                  >
+                  <Typography color="textPrimary" gutterBottom>
                     {student.firstName} {student.lastName}
                   </Typography>
                   <Typography variant="body2" component="p">
@@ -96,9 +78,7 @@ export default function Emotion(pageProps) {
           ))
         ) : (
           <Grid item xs={4}>
-            <Typography className={classes.pos} color="textSecondary">
-              No students found
-            </Typography>
+            <Typography color="textSecondary">No students found</Typography>
           </Grid>
         )}
       </Grid>

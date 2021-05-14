@@ -8,19 +8,6 @@ import Typography from "@material-ui/core/Typography";
 import styles from "../styles/layout.module.css";
 import Link from "next/link";
 
-const useStyles = makeStyles({
-  root: {
-    minWidth: 0,
-  },
-  title: {
-    fontSize: 18,
-  },
-  pos: {
-    marginBottom: 12,
-    fontSize: 12,
-  },
-});
-
 export const ALL_COURSES_QUERY = gql`
   query allCourses {
     queryCourse {
@@ -35,7 +22,6 @@ export const ALL_COURSES_QUERY = gql`
 `;
 
 export default function CoursesList() {
-  const classes = useStyles();
   const {
     loading: loadingCourses,
     error: errCourses,
@@ -56,16 +42,15 @@ export default function CoursesList() {
       <Grid style={{ marginTop: "20px" }} container spacing={2}>
         {dataset.map((course) => (
           <Grid item xs={6} key={course.id}>
-            <Card className={classes.root}>
+            <Card>
               <CardContent>
-                <Typography
-                  className={classes.title}
-                  color="textPrimary"
-                  gutterBottom
-                >
+                <Typography color="textPrimary" gutterBottom>
                   {course.name}
                 </Typography>
-                <Typography className={classes.pos} color="textSecondary">
+                <Typography
+                  color="textSecondary"
+                  style={{ marginBottom: 12, fontSize: 12 }}
+                >
                   {course.desc}
                 </Typography>
                 <Typography variant="body2" component="p">

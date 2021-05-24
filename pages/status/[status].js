@@ -1,6 +1,6 @@
 import React from "react";
 import { gql } from "@apollo/client";
-import Layout from "../../components/sharedLayout";
+import Layout from "../../components/SharedLayout";
 import { initializeApollo } from "../../lib/apolloClient";
 import Grid from "@material-ui/core/Grid";
 import Link from "next/link";
@@ -63,7 +63,7 @@ export default function Emotion(pageProps) {
       ))}
 
       <div className={styles.backToHome}>
-        <Link href="/courses/courses">
+        <Link href="/courses/Courses">
           <a>← Back to all courses</a>
         </Link>
       </div>

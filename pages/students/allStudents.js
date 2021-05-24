@@ -1,7 +1,7 @@
 import React from "react";
-import StudentList, { ALL_STUDENTS_QUERY } from "../../components/studentList";
+import StudentList, { ALL_STUDENTS_QUERY } from "../../components/StudentList";
 import { initializeApollo } from "../../lib/apolloClient";
-import Layout from "../../components/sharedLayout";
+import Layout from "../../components/SharedLayout";
 
 const AllStudents = () => {
   return (

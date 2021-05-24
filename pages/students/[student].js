@@ -1,8 +1,8 @@
 import React from "react";
-import Layout from "../../components/sharedLayout";
+import Layout from "../../components/SharedLayout";
 import utilStyles from "../../styles/utils.module.css";
 import { getAllPostIds, getPostData } from "../../lib/info";
-import Date from "../../components/date";
+import Date from "../../components/Date";
 import Head from "next/head";
 import styles from "../../styles/layout.module.css";
 import Link from "next/link";
@@ -40,7 +40,7 @@ export default function Students({ studentData }) {
         <div dangerouslySetInnerHTML={{ __html: studentData.contentHtml }} />
       </article>
       <div className={styles.backToHome}>
-        <Link href="/students/allStudents">
+        <Link href="/students/AllStudents">
           <a>← Back to students</a>
         </Link>
       </div>

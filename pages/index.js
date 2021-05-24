@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import Layout, { siteTitle } from "../components/sharedLayout";
+import Layout, { siteTitle } from "../components/SharedLayout";
 import utilStyles from "../styles/utils.module.css";
 import styles from "../styles/layout.module.css";
 import Link from "next/link";
@@ -19,12 +19,12 @@ export default function Home() {
         <div className={styles.container}>
           <div className={styles.row}>
             <div className={styles.blue}>
-              <Link href="/courses/courses">
+              <Link href="/courses/Courses">
                 <a>Show all courses</a>
               </Link>
             </div>
             <div className={styles.link}>
-              <Link href="/students/allStudents">
+              <Link href="/students/AllStudents">
                 <a>Show all students</a>
               </Link>
             </div>

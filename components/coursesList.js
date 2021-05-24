@@ -2,7 +2,6 @@ import React from "react";
 import { gql, useQuery } from "@apollo/client";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import styles from "../styles/layout.module.css";
